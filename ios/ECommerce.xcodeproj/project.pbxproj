@@ -14,6 +14,9 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-ECommerce-ECommerceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ECommerce-ECommerceTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		59DDE21525DF419597E96ACF /* PlayfairDisplay-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F2C3289784D467D867E9AE4 /* PlayfairDisplay-Black.ttf */; };
+		F4F5378C78064FB3A3F30708 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F30A84343E04EF384050692 /* PlayfairDisplay-Bold.ttf */; };
+		60680B313C224A7C9203577F /* Sevillana-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DF630122B1924B63BCA1CF90 /* Sevillana-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ECommerce/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ECommerce-ECommerceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECommerce-ECommerceTests.release.xcconfig"; path = "Target Support Files/Pods-ECommerce-ECommerceTests/Pods-ECommerce-ECommerceTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		3F2C3289784D467D867E9AE4 /* PlayfairDisplay-Black.ttf */ = {isa = PBXFileReference; name = "PlayfairDisplay-Black.ttf"; path = "../src/fonts/PlayfairDisplay-Black.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2F30A84343E04EF384050692 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; name = "PlayfairDisplay-Bold.ttf"; path = "../src/fonts/PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DF630122B1924B63BCA1CF90 /* Sevillana-Regular.ttf */ = {isa = PBXFileReference; name = "Sevillana-Regular.ttf"; path = "../src/fonts/Sevillana-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +130,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				9705D203F8724C0F89309C22 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -149,6 +156,17 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		9705D203F8724C0F89309C22 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				3F2C3289784D467D867E9AE4 /* PlayfairDisplay-Black.ttf */,
+				2F30A84343E04EF384050692 /* PlayfairDisplay-Bold.ttf */,
+				DF630122B1924B63BCA1CF90 /* Sevillana-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -245,6 +263,9 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				59DDE21525DF419597E96ACF /* PlayfairDisplay-Black.ttf in Resources */,
+				F4F5378C78064FB3A3F30708 /* PlayfairDisplay-Bold.ttf in Resources */,
+				60680B313C224A7C9203577F /* Sevillana-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

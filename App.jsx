@@ -4,6 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
 import Routes from './src/navigation/index';
 import AuthProvider from './src/context/AuthContext';
+import {LikeProvider} from './src/context/LikedContext';
 export default function App() {
   useEffect(() => {
     setTimeout(() => {
@@ -13,9 +14,11 @@ export default function App() {
 
   return (
     <AuthProvider>
-      <NavigationContainer>
-        <Routes />
-      </NavigationContainer>
+      <LikeProvider>
+        <NavigationContainer>
+          <Routes />
+        </NavigationContainer>
+      </LikeProvider>
     </AuthProvider>
   );
 }
