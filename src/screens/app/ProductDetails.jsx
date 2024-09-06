@@ -1,16 +1,26 @@
-import {View, Text, ScrollView, Image, Pressable} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  Image,
+  Pressable,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useContext, useState} from 'react';
 import HomeHeader from './components/HomeHeader';
 import FontAwesome from 'react-native-vector-icons/Ionicons';
 import {LikeContext} from '../../context/LikedContext';
+import {useCart} from '../../context/CartContext';
+import {useWishlist} from '../../context/WishlistContext';
 const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6'];
 export default function ProductDetails({route, navigation}) {
   const {item, index} = route.params;
-  const {liked, setLiked} = useContext(LikeContext);
+  const {liked, setLiked} = useWishlist();
   const [selectedSize, setSelectedSize] = useState('XS');
   const [selectedColor, setSelectedColor] = useState('#3498db');
-  // const [liked, setLiked] = useState(false);
+  const {addToCart} = useCart();
+
   return (
     <>
       <ScrollView className="bg-white px-3">
@@ -92,9 +102,10 @@ export default function ProductDetails({route, navigation}) {
           <View className="">
             <Text className="text-black text-xl">Colors</Text>
             <View className="flex-row space-x-2 my-2">
-              {colors.map(item => {
+              {colors.map((item, ind) => {
                 return (
                   <Pressable
+                    key={ind}
                     onPress={() => setSelectedColor(item)}
                     className={`w-12   mx-2   p-4 rounded-lg border ${
                       selectedColor == item ? 'border-black' : 'border-white'
@@ -163,11 +174,13 @@ export default function ProductDetails({route, navigation}) {
           onPress={() => navigation.navigate('CheckOut')}>
           <Text className="text-white text-center">Buy Now</Text>
         </Pressable>
-        <Pressable
+        <TouchableOpacity
           className="border border-black w-[48%] rounded-md p-3"
-          onPress={() => navigation.navigate('Cart')}>
+          onPress={() => {
+            addToCart(item), navigation.navigate('Cart');
+          }}>
           <Text className="text-black text-center">Add to Cart</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
     </>
   );

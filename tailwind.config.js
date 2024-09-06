@@ -3,7 +3,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        playfair: ['PlayfairDisplay-Bold', 'serif'], // Add PlayfairDisplay-Bold font
+        playfair: ['PlayfairDisplay-Black', 'serif'],
+        playfair_b: ['PlayfairDisplay-Bold', 'serif'],
+        playfair_r: ['PlayfairDisplay-Regular', 'serif'],
+        playfair_m: ['PlayfairDisplay-Medium', 'serif'],
+        sevillana: ['Sevillana-Regular', 'serif'], // Add PlayfairDisplay-Bold font
       },
     },
   },

@@ -4,6 +4,7 @@ import {products} from '../../../components/Products';
 import FontAwesome from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {LikeContext} from '../../../context/LikedContext';
+import {useWishlist} from '../../../context/WishlistContext';
 export default function Products({item}) {
   const navigation = useNavigation();
 
@@ -21,7 +22,7 @@ export default function Products({item}) {
 }
 
 const RenderProduct = ({item, index, navigation}) => {
-  const {liked, setLiked} = useContext(LikeContext);
+  const {toggleItemInWishlist, liked, setLiked} = useWishlist();
   return (
     <Pressable
       className="flex-1 items-center p-4"
@@ -40,13 +41,14 @@ const RenderProduct = ({item, index, navigation}) => {
       </Text>
       <Text className="text-md text-gray-500">${item.price}</Text>
       <Pressable
-        onPress={() =>
+        onPress={() => {
           setLiked(prev => {
             const temp = [...prev];
             temp[index] = !temp[index];
             return temp;
-          })
-        }
+          });
+          toggleItemInWishlist(item);
+        }}
         className="absolute right-5 top-5 bg-white p-2 rounded-full">
         <FontAwesome
           name={liked[index] ? 'heart' : 'heart-outline'}

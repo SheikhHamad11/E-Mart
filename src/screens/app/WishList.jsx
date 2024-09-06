@@ -1,23 +1,23 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {View, Text, FlatList, Pressable, Image} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/Ionicons';
 import HomeHeader from './components/HomeHeader';
-import {LikeContext} from '../../context/LikedContext';
+
+import {useWishlist} from '../../context/WishlistContext';
 
 const Wishlist = ({navigation}) => {
-  const {liked} = useContext(LikeContext);
-
+  const {wishlistItems} = useWishlist();
   return (
     <View className="px-3">
-      <HomeHeader title="WishList" length={liked?.length} />
-      {liked.length > 0 ? (
+      <HomeHeader title="WishList" length={wishlistItems?.length} />
+      {wishlistItems.length > 0 ? (
         <FlatList
-          data={liked}
+          data={wishlistItems}
           renderItem={({item, index}) => (
             <RenderProduct item={item} index={index} navigation={navigation} />
           )}
-          keyExtractor={item => item?.id}
-          numColumns={1}
+          keyExtractor={item => item.id}
+          numColumns={2}
           contentContainerStyle={{paddingHorizontal: 10, marginBottom: 50}}
         />
       ) : (
@@ -30,7 +30,7 @@ const Wishlist = ({navigation}) => {
 export default Wishlist;
 
 const RenderProduct = ({item, index, navigation}) => {
-  const {liked, setLiked} = useContext(LikeContext);
+  const {toggleItemInWishlist, liked, setLiked} = useWishlist();
   return (
     <Pressable
       className="flex-1 items-center p-4"
@@ -49,13 +49,14 @@ const RenderProduct = ({item, index, navigation}) => {
       </Text>
       <Text className="text-md text-gray-500">${item.price}</Text>
       <Pressable
-        onPress={() =>
+        onPress={() => {
           setLiked(prev => {
             const temp = [...prev];
             temp[index] = !temp[index];
             return temp;
-          })
-        }
+          });
+          toggleItemInWishlist(item);
+        }}
         className="absolute right-5 top-5 bg-white p-2 rounded-full">
         <FontAwesome
           name={liked[index] ? 'heart' : 'heart-outline'}

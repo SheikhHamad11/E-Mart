@@ -1,8 +1,7 @@
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, TextInput, Pressable} from 'react-native';
 import React from 'react';
 import HomeHeader from './components/HomeHeader';
 import FontAwesome from 'react-native-vector-icons/Ionicons';
-import CommonButton from '../../components/CommonButton';
 import ExampleProduct from '../../components/ExampleProduct';
 export default function LeaveAReview({navigation}) {
   return (
@@ -32,12 +31,24 @@ export default function LeaveAReview({navigation}) {
           className="text-black"
         />
       </View>
-      <CommonButton
-        title1={'Submit Review'}
-        title2={'Maybe Later'}
-        navigate1="SubmitReview"
-        navigate2="Home"
-      />
+      <View className="flex-row justify-between  items-center p-3 z-10  w-[100%]">
+        <Pressable
+          className="bg-black w-[48%] rounded-md p-3"
+          onPress={() =>
+            navigation.navigate('CommonReview', {
+              title: 'Review Posted Successfully!',
+              title2: 'Review',
+              btitle: 'Okay',
+            })
+          }>
+          <Text className="text-white text-center">Submit Review</Text>
+        </Pressable>
+        <Pressable
+          className="border border-black w-[48%] rounded-md p-3"
+          onPress={() => navigation.navigate('Home')}>
+          <Text className="text-black text-center">Maybe Later</Text>
+        </Pressable>
+      </View>
     </View>
   );
 }

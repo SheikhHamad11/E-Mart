@@ -2,15 +2,15 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/fonts/PlayfairDisplay-Black.ttf",
+      "path": "assets/fonts/PlayfairDisplay-Black.ttf",
       "sha1": "8447710fac88b58e7f3b6f034ceda7eb3a036f4c"
     },
     {
-      "path": "src/fonts/PlayfairDisplay-Bold.ttf",
+      "path": "assets/fonts/PlayfairDisplay-Bold.ttf",
       "sha1": "fb74d7e889a2c24dc08d5b931c620d47e607d11a"
     },
     {
-      "path": "src/fonts/Sevillana-Regular.ttf",
+      "path": "assets/fonts/Sevillana-Regular.ttf",
       "sha1": "3403153ab25c39d6d050b87b2e55f580d384afe8"
     }
   ]

@@ -5,6 +5,7 @@ import {
   TextInput,
   ScrollView,
   Pressable,
+  StyleSheet,
 } from 'react-native';
 import React, {useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
@@ -23,11 +24,7 @@ export default function Home() {
           source={require('../../images/logo.jpg')}
           style={{height: 50, width: 50}}
         />
-        <Text
-          className=" text-black text-2xl font-bold"
-          style={{fontFamily: 'Sevillana-Regular'}}>
-          E-Mart
-        </Text>
+        <Text className="text-black text-2xl font-playfair_b">E-Mart</Text>
         <FontAwesome name="bell" size={25} color={'black'} />
       </View>
       <View className="flex-row justify-between mt-5">
@@ -51,7 +48,7 @@ export default function Home() {
       <Categories />
 
       <View className="flex-row justify-between items-center my-4">
-        <Text className="text-black text-xl">Most Popular</Text>
+        <Text className="text-black text-lg font-playfair_b">Most Popular</Text>
         <Pressable onPress={() => navigation.navigate('AllProducts')}>
           <Text className="text-black">View All</Text>
         </Pressable>

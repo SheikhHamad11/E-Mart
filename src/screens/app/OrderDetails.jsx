@@ -2,7 +2,7 @@ import {View, Text, Pressable, ScrollView, Image} from 'react-native';
 import React from 'react';
 import HomeHeader from './components/HomeHeader';
 import {product} from '../../components/Products';
-
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 export default function CheckOut({navigation}) {
   return (
     <ScrollView className="px-3">
@@ -28,7 +28,7 @@ export default function CheckOut({navigation}) {
       <View className="flex-row justify-between items-center my-4">
         <Text className="text-black text-xl">Available Vouchers</Text>
         <Pressable onPress={() => navigation.navigate('Vouchers')}>
-          <Text className="text-black">View All</Text>
+          <FontAwesome name={'angle-right'} size={20} color={'black'} />
         </Pressable>
       </View>
       <View className="bg-gray-200  border border-gray-200 w-[99%] p-2 rounded-l-md">
@@ -43,7 +43,7 @@ export default function CheckOut({navigation}) {
         <Text className="text-black text-md">Delivery</Text>
         <View className="flex-row justify-between bg-gray-200  border border-gray-200 w-[99%] p-5 rounded-md my-3">
           <Text className="text-black text-md">Choose Delivery</Text>
-          <Text className="text-black text-md">{'>'}</Text>
+          <FontAwesome name={'angle-right'} size={20} color={'black'} />
         </View>
       </View>
 
@@ -51,28 +51,30 @@ export default function CheckOut({navigation}) {
         <Text className="text-black text-md">Select Payment Method</Text>
         <View className="flex-row  justify-between bg-gray-200  border border-gray-200 w-[99%] p-5 rounded-md my-3">
           <Text className="text-black text-md">Choose Payment Method</Text>
-          <Text className="text-black text-md">{'>'}</Text>
+          <FontAwesome name={'angle-right'} size={20} color={'black'} />
         </View>
       </View>
 
       <View className="space-y-2 mt-2">
         <Text className="text-black text-md">Order Summary</Text>
-        <View className="flex-row  justify-between bg-gray-200  border border-gray-200 w-[99%] p-5 rounded-md my-3">
-          <Text className="text-black text-md">Subtotal</Text>
-          <Text className="text-black text-md">$316</Text>
-        </View>
-        <View className="flex-row  justify-between bg-gray-200  border border-gray-200 w-[99%] p-5 rounded-md my-3">
-          <Text className="text-black text-md">Subtotal</Text>
-          <Text className="text-black text-md">$316</Text>
-        </View>
-        <View className="flex-row  justify-between bg-gray-200  border border-gray-200 w-[99%] p-5 rounded-md my-3">
-          <Text className="text-black text-md">Subtotal</Text>
-          <Text className="text-black text-md">$316</Text>
+        <View className="bg-gray-200 w-[99%] p-5 rounded-md my-3 space-y-2">
+          <View className="flex-row justify-between">
+            <Text className="text-black text-md">Subtotal</Text>
+            <Text className="text-black text-md">$316</Text>
+          </View>
+          <View className="flex-row justify-between">
+            <Text className="text-black text-md">Subtotal</Text>
+            <Text className="text-black text-md">$316</Text>
+          </View>
+          <View className="flex-row justify-between">
+            <Text className="text-black text-md">Subtotal</Text>
+            <Text className="text-black text-md">$316</Text>
+          </View>
         </View>
 
         <Pressable
           className="bg-black w-[95%] mx-auto rounded-md p-3 mb-3"
-          onPress={() => navigation.navigate('CheckOut')}>
+          onPress={() => navigation.navigate('GenerateInvoice')}>
           <Text className="text-white text-center">Generate Invoice</Text>
         </Pressable>
       </View>

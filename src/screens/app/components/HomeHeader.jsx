@@ -13,7 +13,7 @@ export default function HomeHeader({title, share, length}) {
           <FontAwesome name="angle-left" size={15} color={'black'} />
         </Pressable>
         <Text className="text-black text-2xl font-bold">{title}</Text>
-        {length > 0 && (
+        {length >= 0 && (
           <Text className="text-black text-2xl font-bold">({length})</Text>
         )}
       </View>
