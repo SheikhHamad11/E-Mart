@@ -5,6 +5,8 @@ import {
   Image,
   Pressable,
   TouchableOpacity,
+  Alert,
+  ToastAndroid,
 } from 'react-native';
 import React, {useContext, useState} from 'react';
 import HomeHeader from './components/HomeHeader';
@@ -19,6 +21,13 @@ export default function ProductDetails({route, navigation}) {
   const {liked, setLiked} = useWishlist();
   const [selectedSize, setSelectedSize] = useState('XS');
   const [selectedColor, setSelectedColor] = useState('#3498db');
+  const showToast = () => {
+    ToastAndroid.showWithGravity(
+      'An item added to cart!',
+      ToastAndroid.SHORT,
+      ToastAndroid.TOP,
+    );
+  };
   const {addToCart} = useCart();
 
   return (
@@ -171,13 +180,15 @@ export default function ProductDetails({route, navigation}) {
       <View className="flex-row justify-between absolute bottom-0 items-center p-3 z-10 bg-white w-[100%]">
         <Pressable
           className="bg-black w-[48%] rounded-md p-3"
-          onPress={() => navigation.navigate('CheckOut')}>
+          onPress={() => {
+            navigation.navigate('CheckOut', {item});
+          }}>
           <Text className="text-white text-center">Buy Now</Text>
         </Pressable>
         <TouchableOpacity
           className="border border-black w-[48%] rounded-md p-3"
           onPress={() => {
-            addToCart(item), navigation.navigate('Cart');
+            addToCart(item), showToast();
           }}>
           <Text className="text-black text-center">Add to Cart</Text>
         </TouchableOpacity>

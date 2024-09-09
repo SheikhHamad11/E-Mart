@@ -11,7 +11,12 @@ export default function CartContextProvider({children}) {
       setCartItems([...cartItems, item]);
       console.log(`${item.name} added to the cart!`);
     } else {
-      console.log(`${item.name} is already in the cart!`);
+      const updatedCartItems = cartItems.map(cartItem =>
+        cartItem.id === item.id
+          ? {...cartItem, quantity: cartItem.quantity + 1} // Increment quantity
+          : cartItem,
+      );
+      setCartItems(updatedCartItems);
     }
   };
 
@@ -21,7 +26,8 @@ export default function CartContextProvider({children}) {
     console.log(`Item with id ${itemId} removed from the cart.`);
   };
   return (
-    <CartContext.Provider value={{addToCart, cartItems, removeFromCart}}>
+    <CartContext.Provider
+      value={{addToCart, cartItems, setCartItems, removeFromCart}}>
       {children}
     </CartContext.Provider>
   );

@@ -28,17 +28,6 @@ export default function MainApp() {
       <View className="bg-white flex-1">
         <Tab.Navigator
           initialRouteName="Home"
-          // screenOptions={{
-          //   tabBarStyle: {
-          //     backgroundColor: 'black',
-
-          //     height: 70,
-          //     paddingBottom: 10,
-          //     borderTopLeftRadius: 30,
-          //     borderTopRightRadius: 30,
-          //   },
-          //   headerShown: false,
-          // }}
           screenOptions={({route}) => ({
             tabBarIcon: ({focused, color, size}) => {
               let iconName;
@@ -49,7 +38,7 @@ export default function MainApp() {
                 iconName = focused ? 'heart' : 'heart-outline';
               } else if (route.name === 'Cart') {
                 iconName = focused ? 'cart' : 'cart-outline';
-              } else if (route.name === 'Order') {
+              } else if (route.name === 'OrderScreen') {
                 iconName = focused ? 'document-text' : 'document-text-outline';
               } else if (route.name === 'Account') {
                 iconName = focused ? 'settings' : 'settings-outline';
@@ -74,7 +63,7 @@ export default function MainApp() {
           <Tab.Screen name="Home" component={Home} />
           <Tab.Screen name="WishList" component={WishList} />
           <Tab.Screen name="Cart" component={CartScreen} />
-          <Tab.Screen name="Order" component={OrderScreen} />
+          <Tab.Screen name="OrderScreen" component={OrderScreen} />
           <Tab.Screen name="Account" component={Account} />
         </Tab.Navigator>
       </View>

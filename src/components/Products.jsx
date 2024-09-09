@@ -12,20 +12,24 @@ export const products = [
     stock: 50,
     rating: 4.5,
     numReviews: 150,
+    quantity: 1,
   },
   {
     id: '2',
-    name: 'Smart LED TV',
+    name: 'Laptop - 15.6" Display',
     description:
-      '55-inch 4K UHD Smart TV with built-in streaming apps and voice control.',
-    price: 499.99,
+      'Powerful laptop with Intel Core i7 processor, 16GB RAM, and 512GB SSD.',
+    price: 1199.99,
     category: 'Electronics',
-    brand: 'VisionTech',
-    image: 'https://voicebot.ai/wp-content/uploads/2021/12/zoom-fire.png',
-    stock: 20,
-    rating: 4.7,
-    numReviews: 210,
+    brand: 'TechPlus',
+    image:
+      'https://cdn.mos.cms.futurecdn.net/Ajc3ezCTN4FGz2vF4LpQn9-320-80.jpg',
+    stock: 10,
+    rating: 4.6,
+    numReviews: 85,
+    quantity: 1,
   },
+
   {
     id: '3',
     name: 'Running Shoes',
@@ -39,6 +43,7 @@ export const products = [
     stock: 100,
     rating: 4.3,
     numReviews: 95,
+    quantity: 1,
   },
   {
     id: '4',
@@ -52,21 +57,23 @@ export const products = [
     stock: 75,
     rating: 4.8,
     numReviews: 40,
+    quantity: 1,
   },
   {
     id: '5',
-    name: 'Laptop - 15.6" Display',
+    name: 'Smart LED TV',
     description:
-      'Powerful laptop with Intel Core i7 processor, 16GB RAM, and 512GB SSD.',
-    price: 1199.99,
+      '55-inch 4K UHD Smart TV with built-in streaming apps and voice control.',
+    price: 499.99,
     category: 'Electronics',
-    brand: 'TechPlus',
-    image:
-      'https://cdn.mos.cms.futurecdn.net/Ajc3ezCTN4FGz2vF4LpQn9-320-80.jpg',
-    stock: 10,
-    rating: 4.6,
-    numReviews: 85,
+    brand: 'VisionTech',
+    image: 'https://voicebot.ai/wp-content/uploads/2021/12/zoom-fire.png',
+    stock: 20,
+    rating: 4.7,
+    numReviews: 210,
+    quantity: 1,
   },
+
   {
     id: '6',
     name: 'Running Shoes',
@@ -80,6 +87,7 @@ export const products = [
     stock: 100,
     rating: 4.3,
     numReviews: 95,
+    quantity: 1,
   },
 ];
 

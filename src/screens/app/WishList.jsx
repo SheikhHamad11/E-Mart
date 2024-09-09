@@ -8,7 +8,7 @@ import {useWishlist} from '../../context/WishlistContext';
 const Wishlist = ({navigation}) => {
   const {wishlistItems} = useWishlist();
   return (
-    <View className="px-3">
+    <View className="px-3 bg-white flex-1">
       <HomeHeader title="WishList" length={wishlistItems?.length} />
       {wishlistItems.length > 0 ? (
         <FlatList
