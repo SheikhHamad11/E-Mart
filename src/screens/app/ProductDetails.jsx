@@ -4,21 +4,22 @@ import {
   ScrollView,
   Image,
   Pressable,
-  TouchableOpacity,
-  Alert,
   ToastAndroid,
 } from 'react-native';
-import React, {useContext, useState} from 'react';
+import React, {useState} from 'react';
 import HomeHeader from './components/HomeHeader';
 import FontAwesome from 'react-native-vector-icons/Ionicons';
-import {LikeContext} from '../../context/LikedContext';
 import {useCart} from '../../context/CartContext';
 import {useWishlist} from '../../context/WishlistContext';
+import CommonButton from '../../components/CommonButton';
+import {useDispatch, useSelector} from 'react-redux';
+import {addToCart} from '../../redux/CartSlice';
+import {toggleWishlist} from '../../redux/WishlistSlice';
 const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f1c40f', '#9b59b6'];
 export default function ProductDetails({route, navigation}) {
-  const {item, index} = route.params;
-  const {liked, setLiked} = useWishlist();
+  const {item} = route.params;
+
   const [selectedSize, setSelectedSize] = useState('XS');
   const [selectedColor, setSelectedColor] = useState('#3498db');
   const showToast = () => {
@@ -28,8 +29,15 @@ export default function ProductDetails({route, navigation}) {
       ToastAndroid.TOP,
     );
   };
-  const {addToCart} = useCart();
+  // const {addToCart} = useCart();
 
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(item));
+  };
+  const wishlistItems = useSelector(state => state?.wishList.items);
+  const isInWishlist = wishlistItems?.some(i => i.id === item.id);
   return (
     <>
       <ScrollView className="bg-white px-3">
@@ -58,14 +66,15 @@ export default function ProductDetails({route, navigation}) {
             <Pressable
               className="border border-black rounded-full p-2"
               onPress={() =>
-                setLiked(prev => {
-                  const temp = [...prev];
-                  temp[index] = !temp[index];
-                  return temp;
-                })
+                // setLiked(prev => {
+                //   const temp = [...prev];
+                //   temp[index] = !temp[index];
+                //   return temp;
+                // })
+                dispatch(toggleWishlist(item))
               }>
               <FontAwesome
-                name={liked[index] ? 'heart' : 'heart-outline'}
+                name={isInWishlist ? 'heart' : 'heart-outline'}
                 size={20}
                 color={'black'}
               />
@@ -73,6 +82,7 @@ export default function ProductDetails({route, navigation}) {
           </View>
           <Text className="text-xl text-black">${item.price}</Text>
           <View className="border border-gray-300 border-dashed my-2 "></View>
+          {/* vouchers  */}
           <View className="flex-row justify-between items-center my-4">
             <Text className="text-black text-xl">Available Vouchers</Text>
             <Pressable onPress={() => navigation.navigate('Vouchers')}>
@@ -87,6 +97,7 @@ export default function ProductDetails({route, navigation}) {
               20DEALS *Min Spend $150 Valid till 12/12/2024
             </Text>
           </View>
+          {/* Sizes  */}
           <View>
             <Text className="text-black text-xl">Size</Text>
             <View className="flex-row space-x-2 my-2">
@@ -108,6 +119,7 @@ export default function ProductDetails({route, navigation}) {
               })}
             </View>
           </View>
+          {/* colors  */}
           <View className="">
             <Text className="text-black text-xl">Colors</Text>
             <View className="flex-row space-x-2 my-2">
@@ -124,6 +136,7 @@ export default function ProductDetails({route, navigation}) {
               })}
             </View>
           </View>
+          {/* product info  */}
           <View>
             <Text className="text-black text-xl">Product Information </Text>
             <ProductInfo title="Material" desc="100% Acrylic" />
@@ -133,6 +146,7 @@ export default function ProductDetails({route, navigation}) {
             <ProductInfo title="Care Label" desc="High Neck" />
             <ProductInfo title="Pattern" desc="Solid" />
           </View>
+          {/* ratings & review  */}
           <View className="flex-row justify-between items-center my-4">
             <Text className="text-black text-xl">Rating & Reviews </Text>
             <Pressable onPress={() => navigation.navigate('Ratings')}>
@@ -146,11 +160,14 @@ export default function ProductDetails({route, navigation}) {
                 4.8
               </Text>
               <View className="flex-row justify-center space-x-1 ">
-                <FontAwesome name="star" size={10} color={'gray'} />
-                <FontAwesome name="star" size={10} color={'gray'} />
-                <FontAwesome name="star" size={10} color={'gray'} />
-                <FontAwesome name="star" size={10} color={'gray'} />
-                <FontAwesome name="star" size={10} color={'gray'} />
+                {[...Array(5)].map((_, index) => (
+                  <FontAwesome
+                    key={index}
+                    name={'star'}
+                    size={10}
+                    color={'gray'}
+                  />
+                ))}
               </View>
               <Text className="text-black text-sm text-center">
                 563 ratings *100 reviews
@@ -158,40 +175,35 @@ export default function ProductDetails({route, navigation}) {
             </View>
             <View className="border-[0.5px] border-gray-300"></View>
             <View className="w-[40%]">
-              <Text className="text-black">
-                5 <FontAwesome name="star" size={10} color={'gray'} />
-              </Text>
-              <Text className="text-black">
-                4 <FontAwesome name="star" size={10} color={'gray'} />
-              </Text>
-              <Text className="text-black">
-                3 <FontAwesome name="star" size={10} color={'gray'} />
-              </Text>
-              <Text className="text-black">
-                2 <FontAwesome name="star" size={10} color={'gray'} />
-              </Text>
-              <Text className="text-black">
-                1 <FontAwesome name="star" size={10} color={'gray'} />
-              </Text>
+              {[...Array(5)].map((_, index) => (
+                <View className="flex-row items-center space-x-1">
+                  <Text className="text-black text-sm">{index + 1}</Text>
+                  <FontAwesome
+                    key={index}
+                    name={'star'}
+                    size={10}
+                    color={'gray'}
+                  />
+                </View>
+              ))}
             </View>
           </View>
         </View>
       </ScrollView>
-      <View className="flex-row justify-between absolute bottom-0 items-center p-3 z-10 bg-white w-[100%]">
-        <Pressable
-          className="bg-black w-[48%] rounded-md p-3"
-          onPress={() => {
+      {/* addtocart buttons  */}
+      <View className="flex-row justify-between absolute bottom-0 items-center  bg-white w-[100%]">
+        <CommonButton
+          title1={'Buy Now'}
+          title2={'Add to Cart'}
+          onPress1={() => {
             navigation.navigate('CheckOut', {item});
-          }}>
-          <Text className="text-white text-center">Buy Now</Text>
-        </Pressable>
-        <TouchableOpacity
-          className="border border-black w-[48%] rounded-md p-3"
-          onPress={() => {
-            addToCart(item), showToast();
-          }}>
-          <Text className="text-black text-center">Add to Cart</Text>
-        </TouchableOpacity>
+          }}
+          onPress2={() => {
+            // addToCart(item),
+            handleAddToCart(item);
+            showToast();
+          }}
+        />
       </View>
     </>
   );

@@ -8,7 +8,7 @@ export default function OrderScreen({navigation, route}) {
   const {cartItems, item} = route.params || {};
   // console.log('item', cartItems, item);
   // Conditional rendering based on selected tab
-  const renderContent = () => {
+  const RenderContent = () => {
     switch (selectedTab) {
       case 'Active':
         return (
@@ -35,31 +35,32 @@ export default function OrderScreen({navigation, route}) {
                     source={{uri: item.image}}
                     className="h-40 w-24 rounded-lg"
                   />
+                  <View>
+                    <Text className="text-lg font-bold text-black">
+                      {item.name}
+                    </Text>
+                    <Text className="text-black">${item.price}</Text>
+                    <Text className="text-black">{item.category}</Text>
+                    <Text className="text-black">{item.brand}</Text>
+                    <Text className="text-black">{item.stock}</Text>
+                    <Text className="text-black">{item.rating}</Text>
 
-                  <Text className="text-lg font-bold text-black">
-                    {item.name}
-                  </Text>
-                  <Text className="text-black">${item.price}</Text>
-                  <Text className="text-black">{item.category}</Text>
-                  <Text className="text-black">{item.brand}</Text>
-                  <Text className="text-black">{item.stock}</Text>
-                  <Text className="text-black">{item.rating}</Text>
-
-                  <View className=" flex flex-row justify-between items-center">
-                    <Pressable
-                      className="bg-black p-2 rounded-md"
-                      onPress={() => navigation.navigate('TrackOrder')}>
-                      <Text className="text-white text-center">
-                        Track Order
-                      </Text>
-                    </Pressable>
-                    <Pressable
-                      className="border border-black p-2 rounded-md"
-                      onPress={() => navigation.navigate('OrderDetails')}>
-                      <Text className="text-black text-center">
-                        Order Details
-                      </Text>
-                    </Pressable>
+                    <View className="flex-row  space-x-2">
+                      <Pressable
+                        className="bg-black p-2 rounded-md"
+                        onPress={() => navigation.navigate('TrackOrder')}>
+                        <Text className="text-white text-center">
+                          Track Order
+                        </Text>
+                      </Pressable>
+                      <Pressable
+                        className="border border-black p-2 rounded-md"
+                        onPress={() => navigation.navigate('OrderDetails')}>
+                        <Text className="text-black text-center">
+                          Order Details
+                        </Text>
+                      </Pressable>
+                    </View>
                   </View>
                 </View>
               ))
@@ -116,9 +117,11 @@ export default function OrderScreen({navigation, route}) {
               <Text className="text-black text-lg">Total Item</Text>
               <Text className="text-black text-lg">(5)</Text>
             </View>
-            {product.map(item => {
+            {product.map((item, index) => {
               return (
-                <View className="bg-gray-200 p-3 flex-row space-x-2  rounded-lg my-5 ">
+                <View
+                  key={index}
+                  className="bg-gray-200 p-3 flex-row space-x-2  rounded-lg my-5 ">
                   <Image
                     source={{uri: item.image}}
                     className="h-40 w-24 rounded-lg"
@@ -155,7 +158,9 @@ export default function OrderScreen({navigation, route}) {
             </View>
             {product.map(item => {
               return (
-                <View className="bg-gray-200 p-3 flex-row space-x-2  rounded-lg my-5 ">
+                <View
+                  key={item}
+                  className="bg-gray-200 p-3 flex-row space-x-2  rounded-lg my-5 ">
                   <Image
                     source={{uri: item.image}}
                     className="h-40 w-24 rounded-lg"
@@ -184,7 +189,7 @@ export default function OrderScreen({navigation, route}) {
     }
   };
   return (
-    <ScrollView className="px-3">
+    <ScrollView className="px-3 bg-white">
       <HomeHeader title="My Order" />
       <View className="flex-row justify-between mx-3">
         {status.map((item, index) => {
@@ -209,7 +214,7 @@ export default function OrderScreen({navigation, route}) {
         })}
       </View>
 
-      {renderContent()}
+      {RenderContent()}
     </ScrollView>
   );
 }

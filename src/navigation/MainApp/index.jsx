@@ -16,9 +16,19 @@ import CheckOut from '../../screens/app/CheckOut';
 import TrackOrder from '../../screens/app/TrackOrder';
 import OrderDetails from '../../screens/app/OrderDetails';
 import LeaveAReview from '../../screens/app/LeaveAReview';
-import SubmitReview from '../../components/CommonReview';
 import GenerateInvoice from '../../screens/app/GenerateInvoice';
 import CommonReview from '../../components/CommonReview';
+import ManageAddress from '../../screens/app/ManageAddress';
+import PaymentMethods from '../../screens/app/PaymentMethods';
+import SelectLanguage from '../../screens/app/SelectLanguage';
+import Security from '../../screens/app/Security';
+import MyProfile from '../../screens/app/MyProfile';
+import AppAppearence from '../../screens/app/AppAppearence';
+import Notifications from '../../screens/app/Notifications';
+import AnalyticsPage from '../../screens/app/AnalyticsPage';
+import HelpPage from '../../screens/app/HelpPage';
+import AddNewPayment from '../../screens/app/AddNewPayment';
+import AddNewAddress from '../../screens/app/AddNewAddress';
 export default function MainApp() {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
@@ -83,6 +93,17 @@ export default function MainApp() {
       <Stack.Screen name="LeaveAReview" component={LeaveAReview} />
       <Stack.Screen name="CommonReview" component={CommonReview} />
       <Stack.Screen name="GenerateInvoice" component={GenerateInvoice} />
+      <Stack.Screen name="ManageAddress" component={ManageAddress} />
+      <Stack.Screen name="PaymentMethods" component={PaymentMethods} />
+      <Stack.Screen name="SelectLanguage" component={SelectLanguage} />
+      <Stack.Screen name="Security" component={Security} />
+      <Stack.Screen name="MyProfile" component={MyProfile} />
+      <Stack.Screen name="AppAppearence" component={AppAppearence} />
+      <Stack.Screen name="Notifications" component={Notifications} />
+      <Stack.Screen name="AnalyticsPage" component={AnalyticsPage} />
+      <Stack.Screen name="HelpPage" component={HelpPage} />
+      <Stack.Screen name="AddNewPayment" component={AddNewPayment} />
+      <Stack.Screen name="AddNewAddress" component={AddNewAddress} />
     </Stack.Navigator>
   );
 }

@@ -1,7 +1,6 @@
 import {View, Text, Pressable, ScrollView, Image} from 'react-native';
 import React from 'react';
 import HomeHeader from './components/HomeHeader';
-import {product} from '../../components/Products';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 export default function CheckOut({navigation, route}) {
   const {cartItems, item, totalCartItems} = route.params;

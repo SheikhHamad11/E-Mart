@@ -19,22 +19,18 @@ export default function Vouchers() {
           <Text className="text-white">Reedem</Text>
         </View>
       </View>
-      <Voucher />
-      <Voucher />
-      <Voucher />
-      <Voucher />
-      <Voucher />
+      {[...Array(5)].map((_, index) => {
+        return (
+          <View className="bg-gray-100  border border-gray-200 w-[99%] my-3 p-2 rounded-l-md">
+            <Text className="text-black text-md font-bold">
+              📎Best Deal: 20% OFF
+            </Text>
+            <Text className="text-black text-md">
+              20DEALS *Min Spend $150 Valid till 12/12/2024
+            </Text>
+          </View>
+        );
+      })}
     </View>
   );
 }
-
-const Voucher = () => {
-  return (
-    <View className="bg-gray-100  border border-gray-200 w-[99%] my-3 p-2 rounded-l-md">
-      <Text className="text-black text-md font-bold">📎Best Deal: 20% OFF</Text>
-      <Text className="text-black text-md">
-        20DEALS *Min Spend $150 Valid till 12/12/2024
-      </Text>
-    </View>
-  );
-};

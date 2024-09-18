@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -9,9 +9,15 @@ import {
 } from 'react-native';
 import {useCart} from '../../context/CartContext';
 import HomeHeader from './components/HomeHeader';
-
+import {useDispatch, useSelector} from 'react-redux';
+import {
+  decreaseQuantity,
+  increaseQuantity,
+  removeFromCart,
+} from '../../redux/CartSlice';
 export default CartScreen = ({navigation}) => {
-  const {cartItems, setCartItems} = useCart();
+  // const {cartItems, setCartItems} = useCart();
+  const cartItems = useSelector(state => state.cart.items);
   const updateQuantity = (item, increment) => {
     const updatedCartItems = cartItems.map(cartItem =>
       cartItem.id === item.id
@@ -24,6 +30,7 @@ export default CartScreen = ({navigation}) => {
     (total, item) => total + item.quantity,
     0,
   );
+
   // console.log('cartItems', cartItems);
   return (
     <View className="px-3 flex-1 bg-white">
@@ -60,8 +67,11 @@ export default CartScreen = ({navigation}) => {
 
 const CartItem = ({item, index, updateQuantity}) => {
   // const [count, setCount] = useState(1);
-  const {removeFromCart} = useCart();
-
+  // const {removeFromCart} = useCart();
+  const dispatch = useDispatch();
+  const handleRemoveFromCart = () => {
+    dispatch(removeFromCart(item.id));
+  };
   return (
     <View className="bg-gray-200 p-3 space-x-2 flex-row rounded-lg my-5 ">
       <View>
@@ -69,14 +79,16 @@ const CartItem = ({item, index, updateQuantity}) => {
         <View className="flex-row justify-between mt-2">
           <Pressable
             className="bg-white w-6 h-6 items-center justify-center rounded-full"
-            onPress={() => updateQuantity(item, -1)}
+            // onPress={() => updateQuantity(item, -1)}
+            onPress={() => dispatch(decreaseQuantity(item.id))}
             disabled={item.quantity === 1}>
             <Text className="text-black">-</Text>
           </Pressable>
           <Text className="text-black text-lg">{item.quantity}</Text>
           <Pressable
             className="bg-white w-6 h-6 items-center justify-center rounded-full"
-            onPress={() => updateQuantity(item, 1)}>
+            // onPress={() => updateQuantity(item, 1)}
+            onPress={() => dispatch(increaseQuantity(item.id))}>
             <Text className="text-black">+</Text>
           </Pressable>
         </View>
@@ -91,7 +103,8 @@ const CartItem = ({item, index, updateQuantity}) => {
 
         <TouchableOpacity
           className="bg-black rounded-md p-2 items-center mt-2"
-          onPress={() => removeFromCart(item.id)}>
+          // onPress={() => removeFromCart(item.id)}
+          onPress={handleRemoveFromCart}>
           <Text className="text-white">Remove from Cart</Text>
         </TouchableOpacity>
       </View>

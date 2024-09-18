@@ -11,6 +11,7 @@ export default function Categories() {
       {categories.map(item => {
         return (
           <Pressable
+            key={item}
             className={`h-12 mx-2 p-3 rounded-lg ${
               selectedCategory === item ? 'bg-black' : 'bg-gray-200'
             }`}

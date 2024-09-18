@@ -2,9 +2,7 @@ import {
   View,
   Text,
   TextInput,
-  StyleSheet,
   TouchableOpacity,
-  Touchable,
   Image,
   ScrollView,
 } from 'react-native';
@@ -29,102 +27,51 @@ export default function Login() {
         connected
       </Text>
 
-      <Text style={styles.text2}>First Name</Text>
-      <View style={styles.action}>
-        <FontAwesome
-          name="pencil"
-          size={25}
-          color="black"
-          style={styles.smallIcon}
-        />
-        <TextInput
-          placeholder="Enter Your First Name"
-          placeholderTextColor={'rgba(0,0,0,0.8)'}
-          style={styles.textInput}
-          onChange={e => setEmail(e.nativeEvent.text)}
-        />
-      </View>
-
-      <Text style={styles.text2}>Last Name</Text>
-      <View style={styles.action}>
-        <FontAwesome
-          name="pencil"
-          size={25}
-          color="black"
-          style={styles.smallIcon}
-        />
-        <TextInput
-          placeholder="Enter Your Last Name"
-          placeholderTextColor={'rgba(0,0,0,0.8)'}
-          style={styles.textInput}
-          onChange={e => setEmail(e.nativeEvent.text)}
-        />
-      </View>
-
-      <Text style={styles.text2}>Email</Text>
-      <View style={styles.action}>
-        <FontAwesome
-          name="user-o"
-          size={25}
-          color="black"
-          style={styles.smallIcon}
-        />
-        <TextInput
-          placeholder="Enter Email"
-          placeholderTextColor={'rgba(0,0,0,0.8)'}
-          style={styles.textInput}
-          onChange={e => setEmail(e.nativeEvent.text)}
-        />
-      </View>
-
-      <Text style={styles.text2}>Password</Text>
-      <View style={styles.action}>
-        <FontAwesome
-          name="lock"
-          size={25}
-          color="black"
-          style={styles.smallIcon}
-        />
-        <TextInput
-          placeholder="Enter Password"
-          placeholderTextColor={'rgba(0,0,0,0.8)'}
-          style={styles.textInput}
-          onChange={e => setPassword(e.nativeEvent.text)}
-        />
-      </View>
-      <Text style={styles.text2}>Confirm Password</Text>
-      <View style={styles.action}>
-        <FontAwesome
-          name="lock"
-          size={25}
-          color="black"
-          style={styles.smallIcon}
-        />
-
-        <TextInput
-          placeholder="Confirm your Password"
-          placeholderTextColor={'rgba(0,0,0,0.8)'}
-          style={styles.textInput}
-          onChange={e => setPassword(e.nativeEvent.text)}
-        />
-      </View>
+      <CustomInput
+        text={'First Name'}
+        icon={'pencil'}
+        value={name}
+        placeholder={'Enter Your First Name'}
+        onChange={e => setName(e.nativeEvent.text)}
+      />
+      <CustomInput
+        text={'Last Name'}
+        icon={'pencil'}
+        value={name}
+        placeholder={'Enter Your Last Name'}
+        onChange={e => setName(e.nativeEvent.text)}
+      />
+      <CustomInput
+        text={'Email'}
+        icon={'user-o'}
+        value={email}
+        placeholder={'Enter Email'}
+        onChange={e => setEmail(e.nativeEvent.text)}
+      />
+      <CustomInput
+        text={'Password'}
+        icon={'lock'}
+        value={password}
+        placeholder={'Enter Password'}
+        onChange={e => setPassword(e.nativeEvent.text)}
+      />
+      <CustomInput
+        text={'Confirm Password'}
+        icon={'lock'}
+        value={password}
+        placeholder={'Confirm Your password'}
+        onChange={e => setPassword(e.nativeEvent.text)}
+      />
 
       <TouchableOpacity style={styles.inBut}>
         <Text style={styles.textSign}>Sign Up</Text>
       </TouchableOpacity>
       <View style={styles.register}>
-        <Text style={{fontSize: 14, fontWeight: 'bold', color: '#919191'}}>
+        <Text className="text-[#919191] font-bold">
           Already have an Account
         </Text>
         <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 15,
-              marginLeft: 5,
-            }}>
-            Sign In here
-          </Text>
+          <Text className="text-black ml-1">Sign In here</Text>
         </TouchableOpacity>
       </View>
       <Text style={styles.continuewith}>----Or Continue with----</Text>
@@ -143,3 +90,26 @@ export default function Login() {
     </ScrollView>
   );
 }
+
+const CustomInput = ({text, icon, value, placeholder, onChange}) => {
+  return (
+    <>
+      <Text style={styles.text2}>{text}</Text>
+      <View style={styles.action}>
+        <FontAwesome
+          name={icon}
+          size={25}
+          color="black"
+          style={styles.smallIcon}
+        />
+        <TextInput
+          placeholder={placeholder}
+          value={value}
+          placeholderTextColor={'rgba(0,0,0,0.8)'}
+          style={styles.textInput}
+          onChange={onChange}
+        />
+      </View>
+    </>
+  );
+};

@@ -5,7 +5,6 @@ import {
   TextInput,
   ScrollView,
   Pressable,
-  StyleSheet,
 } from 'react-native';
 import React, {useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
@@ -13,18 +12,21 @@ import {AuthContext} from '../../context/AuthContext';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Products from './components/Products';
 import Categories from './components/Categories';
+import Carosel from '../../components/Carosel';
 
 export default function Home() {
   const navigation = useNavigation();
   const {logout} = useContext(AuthContext);
   return (
-    <ScrollView className="flex-1 pt-5 px-2 bg-white">
+    <ScrollView className="flex-1 pt-5 px-2  bg-white">
       <View className="flex flex-row justify-between items-center">
         <Image
           source={require('../../images/logo.jpg')}
           style={{height: 50, width: 50}}
         />
-        <Text className="text-black text-2xl font-playfair_b">E-Mart</Text>
+        <Text className="text-black text-2xl font-playfair_b dark:text-white">
+          E-Mart
+        </Text>
         <FontAwesome name="bell" size={25} color={'black'} />
       </View>
       <View className="flex-row justify-between mt-5">
@@ -40,10 +42,7 @@ export default function Home() {
           <FontAwesome name="search" size={25} color={'white'} />
         </View>
       </View>
-      <Image
-        source={require('../../images/1st.jpg')}
-        className="w-[360] h-[180] my-3 mx-auto rounded-lg"
-      />
+      <Carosel />
 
       <Categories />
 

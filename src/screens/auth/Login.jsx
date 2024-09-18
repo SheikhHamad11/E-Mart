@@ -1,22 +1,15 @@
-import {
-  View,
-  Text,
-  TextInput,
-  StyleSheet,
-  TouchableOpacity,
-  Touchable,
-  Image,
-} from 'react-native';
-import React, {useContext, useState} from 'react';
+import {View, Text, TextInput, TouchableOpacity, Image} from 'react-native';
+import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import styles from './styles';
-import {AuthContext} from '../../context/AuthContext';
+import {useAuth} from '../../context/AuthContext';
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
-  const {login} = useContext(AuthContext);
+  const {login} = useAuth();
 
   return (
     <View style={styles.loginContainer}>
@@ -75,14 +68,7 @@ export default function Login() {
           Don't have an Account
         </Text>
         <TouchableOpacity onPress={() => navigation.navigate('Register')}>
-          <Text
-            style={{
-              color: 'black',
-              fontSize: 15,
-              marginLeft: 5,
-            }}>
-            Sign Up here
-          </Text>
+          <Text className="text-black ml-1">Sign Up here</Text>
         </TouchableOpacity>
       </View>
       <Text style={styles.continuewith}>----Or Continue with----</Text>
